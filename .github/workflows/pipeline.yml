@@ -26,6 +26,7 @@ jobs:
           server: 199.188.200.186
           username: erwioqoa
           password: ${{ secrets.ftp_password }}
+          protocol: sftp
           port: 21098
           server-dir: bloggr.xyz/
           exclude: .git*
