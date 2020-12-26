@@ -1,0 +1,34 @@
+name: Deployment Pipeline
+
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize]
+
+jobs:
+ simple_deployment_pipeline:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+      - run: yarn --frozen-lockfile
+      - run: yarn test
+      - uses: SamKirkland/FTP-Deploy-Action@2a4e9b1312ebeb73a1f72b9330c71831c1e4ce01
+        if: ${{ github.event_name == 'push' }}
+        with:
+          server: ftpes://erwincabrera.com
+          username: erwioqoa
+          password: ${{ secrets.ftp_password }}
+          port: 21098
+          protocol: ftps
+          server-dir: bloggr.xyz/
+          exclude: .git*
+            - .git*/**
+            -  **/.git*/**
+            - node_modules/**
+            - node_modules/**/*
