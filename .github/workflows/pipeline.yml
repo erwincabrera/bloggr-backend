@@ -23,7 +23,7 @@ jobs:
       - uses: SamKirkland/FTP-Deploy-Action@da0d77ff390a13097c60f9b9eb954e503a480d97
         if: ${{ github.event_name == 'push' }}
         with:
-          ftp-server: sftp://erwincabrera.com:21098/bloggr.xyz/
+          ftp-server: sftp://ftp.erwincabrera.com:21098/bloggr.xyz/
           ftp-username: erwioqoa
           ftp-password: ${{ secrets.ftp_password }}
           git-ftp-args: --insecure
