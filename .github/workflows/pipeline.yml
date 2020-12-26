@@ -23,14 +23,6 @@ jobs:
       - uses: SamKirkland/FTP-Deploy-Action@da0d77ff390a13097c60f9b9eb954e503a480d97
         if: ${{ github.event_name == 'push' }}
         with:
-          server: 199.188.200.186
-          username: erwioqoa
-          password: ${{ secrets.ftp_password }}
-          protocol: sftp
-          port: 21098
-          server-dir: bloggr.xyz/
-          exclude: .git*
-            - .git*/**
-            -  **/.git*/**
-            - node_modules/**
-            - node_modules/**/*
+          ftp-server: sftp://erwioqoa@199.188.200.186:21098/bloggr.xyz/
+          ftp-username: erwioqoa
+          ftp-password: ${{ secrets.ftp_password }}
