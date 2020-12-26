@@ -23,7 +23,7 @@ jobs:
       - uses: SamKirkland/FTP-Deploy-Action@2a4e9b1312ebeb73a1f72b9330c71831c1e4ce01
         if: ${{ github.event_name == 'push' }}
         with:
-          server: sftp://erwincabrera.com
+          server: ftp://erwincabrera.com
           username: erwioqoa
           password: ${{ secrets.ftp_password }}
           port: 21098
