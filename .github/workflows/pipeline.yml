@@ -25,5 +25,5 @@ jobs:
         with:
           ftp-server: sftp://ftp.199.188.200.186:21098/bloggr.xyz
           ftp-username: erwioqoa
-          ftp-password: ${{ secrets.ftp_password }}
+          ftp-password: ${{ secrets.FTP_PASSWORD }}
           git-ftp-args: --insecure
