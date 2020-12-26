@@ -70,56 +70,56 @@ test('blog post has friendly id property', async () => {
     }
 })
 
-test('can add new blog posts', async () => {
-    const newPost = {
-        title: "New Title",
-        author: "New Author",
-        url: "NewURL",
-        likes: 1
-    }
+// test('can add new blog posts', async () => {
+//     const newPost = {
+//         title: "New Title",
+//         author: "New Author",
+//         url: "NewURL",
+//         likes: 1
+//     }
 
-    await api.post('/api/blogs')
-        .send(newPost)
-        .expect(201)
+//     await api.post('/api/blogs')
+//         .send(newPost)
+//         .expect(201)
 
-    const newBlogs = await blogsInDb()
+//     const newBlogs = await blogsInDb()
     
-    expect(newBlogs).toHaveLength(initialBlogs.length + 1)
+//     expect(newBlogs).toHaveLength(initialBlogs.length + 1)
 
-    newBlogs.forEach(b => delete b.id)
-    expect(newBlogs).toContainEqual(newPost)
-})
+//     newBlogs.forEach(b => delete b.id)
+//     expect(newBlogs).toContainEqual(newPost)
+// })
 
-test('likes default to 0 if not present', async () => {
-    const newPost = {
-        title: "New Title no like",
-        author: "New Author no like",
-        url: "NewURLNoLike",
-    }
+// test('likes default to 0 if not present', async () => {
+//     const newPost = {
+//         title: "New Title no like",
+//         author: "New Author no like",
+//         url: "NewURLNoLike",
+//     }
 
-    const savedPost = await api.post('/api/blogs').send(newPost)
-    expect(savedPost.body.likes).toEqual(0)
-})
+//     const savedPost = await api.post('/api/blogs').send(newPost)
+//     expect(savedPost.body.likes).toEqual(0)
+// })
 
-test('bad data', async () => {
-    const noUrl = {
-        title: "New Title",
-        author: "New Author",
-    }
+// test('bad data', async () => {
+//     const noUrl = {
+//         title: "New Title",
+//         author: "New Author",
+//     }
 
-    await api.post('/api/blogs')
-        .send(noUrl)
-        .expect(400)
+//     await api.post('/api/blogs')
+//         .send(noUrl)
+//         .expect(400)
 
-    const noTitle = {
-        author: "New Author",
-        url: "NewURL",
-    }
+//     const noTitle = {
+//         author: "New Author",
+//         url: "NewURL",
+//     }
 
-    await api.post('/api/blogs')
-        .send(noUrl)
-        .expect(400)
-})
+//     await api.post('/api/blogs')
+//         .send(noUrl)
+//         .expect(400)
+// })
 
 afterAll(() => {
     mongoose.connection.close()
